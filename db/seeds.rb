@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+species = ["Velociraptor", "Allosaurus", "Iguanodon", "Ankylosaurus", "Brachiosaurus"]
+
+species.each do |s|
+  Dinosaur.create(species:s, health:rand(0..100), happiness:rand(0..100), radiating_positivity:rand(0..100))
+end

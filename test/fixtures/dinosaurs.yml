@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  species: MyString
+  health: 1
+  happiness: 1
+  radiating_positivity: 1
+
+two:
+  species: MyString
+  health: 1
+  happiness: 1
+  radiating_positivity: 1

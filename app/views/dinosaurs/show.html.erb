@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Species:</strong>
+  <%= @dinosaur.species %>
+</p>
+
+<p>
+  <strong>Health:</strong>
+  <%= @dinosaur.health %>
+</p>
+
+<p>
+  <strong>Happiness:</strong>
+  <%= @dinosaur.happiness %>
+</p>
+
+<p>
+  <strong>Radiating positivity:</strong>
+  <%= @dinosaur.radiating_positivity %>
+</p>
+
+<%= link_to 'Edit', edit_dinosaur_path(@dinosaur) %> |
+<%= link_to 'Back', dinosaurs_path %>
