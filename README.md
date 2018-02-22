@@ -4,6 +4,7 @@
 
 Some applications need update at set intervals (such as hourly or daily). Heroku, a web application deployment platform, has a free add-on which allows developers to set up tasks to run at specified times. This update is accomplished through a rake task. A rake task is a block of ruby code that can be run from the command line.
 
+Image or description of Rails app --> Github --> Heroku + Scheduler
 <!-- This tutorial includes a demo Rails application with one resource, dinosaurs. Dinosaurs have the following attributes: species, health, happiness, and radiating_positivity. On a daily basis, the application needs to restore each dinosaur's health, happiness, and radiating_positivity to 100 in the database.   -->
 
 ## Part 1: Using the Admin Dashboard, Create a Heroku App with the Heroku Scheduler Add-on
@@ -11,17 +12,20 @@ Some applications need update at set intervals (such as hourly or daily). Heroku
 ### Description
 Heroku Scheduler is a free Heroku add-on that runs tasks at specific intervals. Tasks can be run daily, hourly, or every ten minutes with Scheduler. Daily tasks are set to run at a certain UTC time.
 
-Through Heroku's admin dashboard, Scheduler can be added to an app, and tasks can be scheduled. This tutorial shows how to create a new Heroku project and add the Scheduler. 
+Through Heroku's admin dashboard, Scheduler can be added to an app, and tasks can be scheduled. This tutorial shows how to create a new Heroku project and add the Scheduler.
+
+### Intended Audience
+
+Admin user (non-developer)
 
 ### Requirements
 
 You must have a [Heroku account](https://www.heroku.com/home) to complete this tutorial.
 
 ### Instructions
-![demo video](https://media.giphy.com/media/25NX0hzarFXVqIzEZU/giphy.gif)
 
 1. From the [Heroku dashboard](https://dashboard.heroku.com/apps) click the **new** button and select **create new app**.
-2. You'll be prompted to name your app. Later, you can give your app a custom domain if you choose. Upon creation, the address will be your-app-name.herokuapp.com.
+2. You'll be prompted to name your app. After creating the app, you can provide a custom domain if you choose. Otherwise, your app will be hosted at your-app-name.herokuapp.com.
 3. Make sure your region is selected from the dropdown, and click **Create app**.
 4. From the dashboard, select the **Overview** tab and click **Configure Add-ons**.
 5. Under **Add-ons**, search for **Heroku Scheduler**.
@@ -29,9 +33,19 @@ You must have a [Heroku account](https://www.heroku.com/home) to complete this t
 7. On the app's dashboard, the Scheduler will be visible under **Installed add-ons**.
 
 
-### Part 2: Developer Guide to Creating a Rake Task and Configuring on Heroku
+## Part 2: Developer Guide to Creating a Rake Task and Configuring on Heroku
 
 ### Requirements
+The following must be installed:
+ - Ruby version 2.4.1
+ - Rails ~5.1.5
+ - [Heroku CLI developer tools](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)
+ - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+ - [PostgreSQL](https://www.postgresql.org/download/)
+
+Also required:
+ - [Github](https://github.com/) account
+ - A Heroku account and app created with Heroku Scheduler (see previous tutorial)
 
 This tutorial requires a Rails 5 application with a postgresql database. By default, Rails apps are created with sqlite3 databases, but Heroku requires postgresql. The database can be specified when creating a new rails app: ```rails new app-name --database=postgresql```
 
