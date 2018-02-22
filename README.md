@@ -2,15 +2,23 @@
 
 ## Tutorial Overview
 
-Some applications need update at set intervals (such as hourly or daily). Heroku, a web application deployment platform, has a free add-on which allows developers to set up tasks to run at specified times. This update is accomplished through a rake task. A rake task is a block of ruby code that can be run from the command line.
+Some applications need tasks to occur at set intervals (such as hourly or daily). Examples of this may include:
+  - A daily check for users whose annual account needs renewal
+  - An hourly update of forecast data for a weather-related app
+  - A calculation of an app's top trending hashtag every ten minutes  
 
-Image or description of Rails app --> Github --> Heroku + Scheduler
-<!-- This tutorial includes a demo Rails application with one resource, dinosaurs. Dinosaurs have the following attributes: species, health, happiness, and radiating_positivity. On a daily basis, the application needs to restore each dinosaur's health, happiness, and radiating_positivity to 100 in the database.   -->
+A task simply performs an action, such as sending an email to users. A task could also insert, update, or delete information from the database.
+
+For Ruby on Rails applications, these tasks are called rake tasks. The ruby code that performs tasks is written in a file called the rakefile.
+
+This tutorial describes how to run rake tasks for Rails 5 applications deployed through the Heroku platform. Heroku is a cloud-based web-hosting service, used to manage web application deployments.
+
+Heroku has a free Heroku add-on to handle basic task scheduling. Without a task scheduler, a rake task can be manually run from the command line. With the Heroku Scheduler, a task can be run automatically at specified times.
 
 ## Part 1: Using the Admin Dashboard, Create a Heroku App with the Heroku Scheduler Add-on
 
 ### Description
-Heroku Scheduler is a free Heroku add-on that runs tasks at specific intervals. Tasks can be run daily, hourly, or every ten minutes with Scheduler. Daily tasks are set to run at a certain UTC time.
+Heroku Scheduler is a free Heroku add-on that runs tasks at specific intervals. Tasks can be run daily, hourly, or every ten minutes with Scheduler. Daily tasks are set to run at a specified UTC time.
 
 Through Heroku's admin dashboard, Scheduler can be added to an app, and tasks can be scheduled. This tutorial shows how to create a new Heroku project and add the Scheduler.
 
@@ -24,13 +32,16 @@ You must have a [Heroku account](https://www.heroku.com/home) to complete this t
 
 ### Instructions
 
+#### Creating a Heroku App
 1. From the [Heroku dashboard](https://dashboard.heroku.com/apps) click the **new** button and select **create new app**.
 2. You'll be prompted to name your app. After creating the app, you can provide a custom domain if you choose. Otherwise, your app will be hosted at your-app-name.herokuapp.com.
 3. Make sure your region is selected from the dropdown, and click **Create app**.
-4. From the dashboard, select the **Overview** tab and click **Configure Add-ons**.
-5. Under **Add-ons**, search for **Heroku Scheduler**.
-6. Agree to the Terms of Service to add the Scheduler.
-7. On the app's dashboard, the Scheduler will be visible under **Installed add-ons**.
+
+#### Adding the Heroku Scheduler
+1. From the dashboard, select the **Overview** tab and click **Configure Add-ons**.
+2. Under **Add-ons**, search for **Heroku Scheduler**.
+3. Agree to the Terms of Service to add the Scheduler.
+4. On the app's dashboard, the Scheduler will be visible under **Installed add-ons**.
 
 
 ## Part 2: Developer Guide to Creating a Rake Task and Configuring on Heroku
