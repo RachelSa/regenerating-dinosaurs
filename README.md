@@ -2,20 +2,23 @@
 
 ## Tutorial Overview
 
-Some applications need update at set intervals (such as hourly or daily). Heroku, a web application deployment platform, has a free addon which allows developers to set up tasks to run at specified times.
+Some applications need update at set intervals (such as hourly or daily). Heroku, a web application deployment platform, has a free add-on which allows developers to set up tasks to run at specified times. This update is accomplished through a rake task. A rake task is a block of ruby code that can be run from the command line.
 
-This tutorial uses a demo application with one resource, dinosaurs. Dinosaurs have the following attributes: species, health, happiness, and radiating_positivity. On a daily basis, the application needs to restore each dinosaur's health, happiness, and radiating_positivity to 100 in the database.  
-
-This update is accomplished through a rake task. A rake task is a block of ruby code that can be run from the command line. In the demo app, the rake task with update all dinosaurs in the database with health, happiness, and radiating_positivity attributes set to 100.    
+<!-- This tutorial includes a demo Rails application with one resource, dinosaurs. Dinosaurs have the following attributes: species, health, happiness, and radiating_positivity. On a daily basis, the application needs to restore each dinosaur's health, happiness, and radiating_positivity to 100 in the database.   -->
 
 ## Part 1: Using the Admin Dashboard, Create a Heroku App with the Heroku Scheduler Add-on
+
+### Description
+Heroku Scheduler is a free Heroku add-on that runs tasks at specific intervals. Tasks can be run daily, hourly, or every ten minutes with Scheduler. Daily tasks are set to run at a certain UTC time.
+
+Through Heroku's admin dashboard, Scheduler can be added to an app, and tasks can be scheduled. This tutorial shows how to create a new Heroku project and add the Scheduler. 
 
 ### Requirements
 
 You must have a [Heroku account](https://www.heroku.com/home) to complete this tutorial.
 
 ### Instructions
-ADD Gif
+![demo video](https://media.giphy.com/media/25NX0hzarFXVqIzEZU/giphy.gif)
 
 1. From the [Heroku dashboard](https://dashboard.heroku.com/apps) click the **new** button and select **create new app**.
 2. You'll be prompted to name your app. Later, you can give your app a custom domain if you choose. Upon creation, the address will be your-app-name.herokuapp.com.
@@ -23,6 +26,7 @@ ADD Gif
 4. From the dashboard, select the **Overview** tab and click **Configure Add-ons**.
 5. Under **Add-ons**, search for **Heroku Scheduler**.
 6. Agree to the Terms of Service to add the Scheduler.
+7. On the app's dashboard, the Scheduler will be visible under **Installed add-ons**.
 
 
 ### Part 2: Developer Guide to Creating a Rake Task and Configuring on Heroku
