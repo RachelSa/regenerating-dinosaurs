@@ -121,16 +121,21 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started
 1. Test that the task runs properly without errors.
 ```heroku run rake restore_dinos```
 
-2. Using Heroku's admin dashboard, schedule the task to run.
-    1. From the **Overview** dashboard, click **Heroku Scheduler** under **Installed Add-ons**.
-    2. Click **Add New Job**.
-    3. Enter the rake command for the task you want to run in the text field.
+2. The task can be scheduled to run using the app's Heroku dashboard. From the **Overview** dashboard, click **Heroku Scheduler** under **Installed Add-ons**.
+
+3. Click **Add New Job**.
+
+4. Enter the rake command for the task you want to run in the text field.
      ```rake restore_dinos```
-    4. Select the frequency you want the task to run from the dropdown.
+
+5. Select the frequency you want the task to run from the dropdown.
         - For daily tasks, select the UTC time you want the task to run.
         - For hourly tasks, select the time you next want the task to run.
-    5. Click **save**.
-    6. You'll be redirected to the scheduler dashboard, where you can edit or remove the task, or create a new task.
+        
+6. Click **save**.
+
+7. You'll be redirected to the scheduler dashboard, where you can edit or remove the task, or create a new task.
+
 See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for more information about Heroku Scheduler.        
 
 ### Questions:
