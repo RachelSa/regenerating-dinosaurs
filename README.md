@@ -78,11 +78,11 @@ Also required:
 1. Within the Rails application, create a new file: ```lib/tasks/scheduler.rake```
 2. Within the rakefile, create one or more tasks. A rake task is made up of the following parts:
 
-  - Description (**desc**) explains what the task will do.  
-  - The **task** is named (this one is called restore_dinos).
-  - Using '**:environment**' loads the Rails environment, allowing access to the rest of the Rails app, such as models.
-  - Within the **do** block, the task occurs. This example prints a message before calling the `.restore` method on the Dinosaur model. After finishing, it prints 'done'.
-  - The code block is closed (**end**).
+  ⋅⋅* Description (**desc**) explains what the task will do.  
+  ⋅⋅* The **task** is named (this one is called restore_dinos).
+  ⋅⋅* **:environment** loads the Rails environment, allowing access to the rest of the Rails app, such as models.
+  ⋅⋅* Within the **do** block, the task occurs. This example prints a message before calling the `.restore` method on the Dinosaur model. After finishing, it prints 'done'.
+  ⋅⋅* The code block is closed (**end**).
 
 ```ruby  
 desc "Restore dinosaurs"
