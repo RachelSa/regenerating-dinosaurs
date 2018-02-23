@@ -150,7 +150,26 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started
 
 7. You'll be redirected to the scheduler dashboard, where you can edit or remove the task, or create a new task.
 
-See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for more information about Heroku Scheduler.        
+See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for more information about Heroku Scheduler.    
+
+### Reference of Terms
+
+**Dynos**: containers used to run web processes and perform jobs for apps deployed through Heroku
+
+**Git**: a version control system used widely in software development
+
+**Github**: a web hosted version control system that uses Git
+
+**Heroku**: a cloud-based web-hosting service used to manage web application deployments
+
+**Heroku Scheduler**: a free Heroku add-on used to handle basic task scheduling
+
+**PostgreSQL**: an object-relational database system
+
+**Rake task**: an action that is executed in a ruby code block, and is stored in a rake file
+
+**Ruby on Rails**: a web application framework that has a model-view-controller structure
+
 
 ## Questions:
  - What do you like about their existing documentation?
