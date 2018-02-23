@@ -2,12 +2,12 @@
 
 ## Tutorial Overview
 
-Some applications need tasks to occur at set intervals (such as hourly or daily). Examples of this may include:
-  - A daily check for users whose annual account needs renewal
+Some applications need tasks to occur at set intervals. Examples of this may include:
+  - A daily check for users whose annual subscription needs renewal
   - An hourly update of forecast data for a weather-related app
-  - A calculation of an app's top trending hashtag every ten minutes  
+  - A recalculation of an app's top trending hashtag every ten minutes  
 
-A task simply performs an action, such as sending an email to users. A task could also insert, update, or delete information from the application's database.
+A task is simply an action that can be executed in a code block, such as sending an email to users. A task could also insert, update, or delete information from the application's database.
 
 For Ruby on Rails applications, these tasks are called rake tasks. The ruby code that performs tasks is written in a file with a .rake extension, called a rake file.
 
@@ -49,7 +49,7 @@ You must have a [Heroku account](https://www.heroku.com/home) to complete this t
 
 ### Description
 
-This tutorial will show how to write a custom rake task in a Rails application rake file and run the task with Heroku Scheduler. This Github repository contains a demo Rails application and specific files within the app will be referenced throughout the tutorial.  
+This tutorial will show how to write a custom rake task in a rake file and run the task with Heroku Scheduler. This Github repository contains a demo Rails application and specific files within the app will be referenced throughout the tutorial.  
 
 ### Intended Audience
 Ruby on Rails Developer
@@ -70,20 +70,26 @@ Also required:
 
    ```rails new app-name --database=postgresql```
 
- If you've created a new Rails application, you'll need to create resource in the database in order to test that the rake task is working. The demo app, which has one resource--dinosaur--has a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs stored in the database.
+ If you've created a new Rails application, you'll need to create resource in the database in order to test that the rake task is working. The demo app has one model--dinosaur--and a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs in the database.
 
 ### Instructions
 
 #### Creating a Rake Task
 1. Within the Rails application, create a new file: ```lib/tasks/scheduler.rake```
-2. Within the rakefile, create one or more tasks. This example rake task has a description, **desc**, saying what the task will do. Next, the **task** is named (this one is named restore_dinos). It's also specified 
+2. Within the rakefile, create one or more tasks. A rake task is made up of the following parts:
+
+  - Description (**desc**) explains what the task will do.  
+  - The **task** is named (this one is called restore_dinos).
+  - Using '**:environment**' loads the Rails environment, allowing access to the rest of the Rails app, such as models.
+  - Within the **do** block, the task occurs. This example prints a message before calling the `.restore` method on the Dinosaur model. After finishing, it prints 'done'.
+  - The code block is closed (**end**).
 
 ```ruby  
 desc "Restore dinosaurs"
 task :restore_dinos => :environment do
   puts "Restoring dinos..."
   Dinosaur.restore
-  puts "done."
+  puts "done"
 end
 ```
 
