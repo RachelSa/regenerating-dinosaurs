@@ -1,5 +1,15 @@
 # Using Heroku Scheduler Automate Tasks for Rails 5.x Applications
 
+Contents
+ - Tutorial Overview
+ - Part 1: Using the Admin Dashboard, Create a Heroku App with the Heroku Scheduler Add-on
+    - Creating a Heroku App
+    - Adding the Heroku Scheduler
+ - Part 2: Create a Rake Task and Configure on Heroku
+    - Creating a Rake Task
+    - Pushing to Github and Deploying to Heroku
+    - Testing and Scheduling the Rake Task
+
 ## Tutorial Overview
 
 Some applications need tasks to occur at set intervals. Examples of this may include:
@@ -45,7 +55,7 @@ You must have a [Heroku account](https://www.heroku.com/home) to complete this t
 4. The Scheduler will be added and in the **Overview** dashboard, the Scheduler will be visible under **Installed add-ons**.
 
 
-## Part 2: Developer Guide to Creating a Rake Task and Configuring on Heroku
+## Part 2: Create a Rake Task and Configure on Heroku
 
 ### Description
 
@@ -64,7 +74,7 @@ The following must be installed:
 
 Also required:
  - [Github account](https://github.com/)
- - A Heroku account and Heroku app created with Heroku Scheduler (see previous tutorial)
+ - [A Heroku account and Heroku app created with Heroku Scheduler](https://github.com/RachelSa/regenerating-dinosaurs#part-1-using-the-admin-dashboard-create-a-heroku-app-with-the-heroku-scheduler-add-on)
 
  Before beginning this tutorial, you must have a Rails 5 application stored in a Github repository. Note that Heroku requires a PostgreSQL database (Rails apps are created with a SQLite database by default).
 
@@ -116,7 +126,7 @@ end
 
 See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started-with-rails5) for more information about deployment.
 
-### Test and Schedule the Rake Task
+### Testing and Scheduling the Rake Task
 
 1. Test that the task runs properly without errors.
 ```heroku run rake restore_dinos```
@@ -131,14 +141,14 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started
 5. Select the frequency you want the task to run from the dropdown.
         - For daily tasks, select the UTC time you want the task to run.
         - For hourly tasks, select the time you next want the task to run.
-        
+
 6. Click **save**.
 
 7. You'll be redirected to the scheduler dashboard, where you can edit or remove the task, or create a new task.
 
 See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for more information about Heroku Scheduler.        
 
-### Questions:
+## Questions:
  - What do you like about their existing documentation?
  - What would you change about the documentation?
 more links
