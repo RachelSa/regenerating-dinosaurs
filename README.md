@@ -1,4 +1,4 @@
-# Using Heroku Scheduler Automate Tasks for Rails 5 Applications
+# Using Heroku Scheduler Automate Tasks for Rails 5.x Applications
 
 ## Tutorial Overview
 
@@ -91,12 +91,12 @@ task :restore_dinos => :environment do
 end
 ```
 
-3. Test the rake task locally by running `rake restore_dinos`, replacing 'restore_dinos' with your task's name.
+3. Test the rake task locally by running the command `rake restore_dinos`, replacing `restore_dinos` with your task's name.
 
 ### Pushing to Github and Deploying to Heroku
 1. Add, commit, and push the code to Github. The master branch on Github should now have the created rake file and tasks.  
 
-2. To deploy the app to Heroku, first run the following command to configure the project to push code to the app created on Heroku. Be sure to use the name that you set when creating the app on the Heroku dashboard.  
+2. To deploy the app to Heroku, first run the following command, which connects your repository to the app created on Heroku. Be sure to use the name that you set when creating the app on the Heroku dashboard.  
 ```heroku git:remote -a your-app-name```
 
 3.   Push the code from the Github repository's master branch to Heroku
@@ -108,11 +108,13 @@ end
 5. Seed the database, if applicable.
  ```heroku rake db:seed```
 
-6. Ensure a dyno is running the web process.
+6. Heroku apps use **Dynos** to run processes for each deployed application. Dynos run web processes and perform jobs (such as a rake task). When the app is deployed, ensure a Dyno is running web processes.
 ```heroku ps:scale web=1```
 
-7. Open the deployed application
-```heroku open```  
+7. Open the deployed application in browser.
+```heroku open```
+
+See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started-with-rails5) for more information about deployment.
 
 ### Test and Schedule the Rake Task
 
@@ -120,4 +122,18 @@ end
 ```heroku run rake restore_dinos```
 
 2. Using Heroku's admin dashboard, schedule the task to run.
-https://sheltered-temple-85179.herokuapp.com/dinosaurs
+    1. From the **Overview** dashboard, click **Heroku Scheduler** under **Installed Add-ons**.
+    2. Click **Add New Job**.
+    3. Enter the rake command for the task you want to run in the text field.
+     ```rake restore_dinos```
+    4. Select the frequency you want the task to run from the dropdown.
+        - For daily tasks, select the UTC time you want the task to run.
+        - For hourly tasks, select the time you next want the task to run.
+    5. Click **save**.
+    6. You'll be redirected to the scheduler dashboard, where you can edit or remove the task, or create a new task.
+See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for more information about Heroku Scheduler.        
+
+### Questions:
+ - What do you like about their existing documentation?
+ - What would you change about the documentation?
+more links
