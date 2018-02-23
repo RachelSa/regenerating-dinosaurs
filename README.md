@@ -1,14 +1,14 @@
 # Using Heroku Scheduler Automate Tasks for Rails 5.x Applications
 
-Contents
- - Tutorial Overview
- - Part 1: Using the Admin Dashboard, Create a Heroku App with the Heroku Scheduler Add-on
-    - Creating a Heroku App
-    - Adding the Heroku Scheduler
- - Part 2: Create a Rake Task and Configure on Heroku
-    - Creating a Rake Task
-    - Pushing to Github and Deploying to Heroku
-    - Testing and Scheduling the Rake Task
+## Contents
+ - [Tutorial Overview](https://github.com/RachelSa/regenerating-dinosaurs#tutorial-overview)
+ - [Part 1: Using the Admin Dashboard, Create a Heroku App with the Heroku Scheduler Add-on](https://github.com/RachelSa/regenerating-dinosaurs#part-1-using-the-admin-dashboard-create-a-heroku-app-with-the-heroku-scheduler-add-on)
+    - [Creating a Heroku App](https://github.com/RachelSa/regenerating-dinosaurs#creating-a-heroku-app)
+    - [Adding the Heroku Scheduler](https://github.com/RachelSa/regenerating-dinosaurs#adding-the-heroku-scheduler)
+ - [Part 2: Create a Rake Task and Configure on Heroku](https://github.com/RachelSa/regenerating-dinosaurs#part-2-create-a-rake-task-and-configure-on-heroku)
+    - [Creating a Rake Task](https://github.com/RachelSa/regenerating-dinosaurs#creating-a-rake-task)
+    - [Pushing to Github and Deploying to Heroku](https://github.com/RachelSa/regenerating-dinosaurs#pushing-to-github-and-deploying-to-heroku)
+    - [Testing and Scheduling the Rake Task](https://github.com/RachelSa/regenerating-dinosaurs#testing-and-scheduling-the-rake-task)
 
 ## Tutorial Overview
 
