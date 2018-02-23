@@ -90,6 +90,9 @@ task :restore_dinos => :environment do
   puts "done"
 end
 ```
+
+3. Test the rake task locally by running `rake restore_dinos`, replacing 'restore_dinos' with your task's name.
+
 ### Pushing to Github and Deploying to Heroku
 1. Add, commit, and push the code to Github. The master branch on Github should now have the created rake file and tasks.  
 
