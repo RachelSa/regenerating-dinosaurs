@@ -143,8 +143,8 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started
 `rake restore_dinos`
 
 5. Select the frequency you want the task to run from the dropdown.
-  - For daily tasks, select the UTC time you want the task to run.
-  - For hourly tasks, select the time you next want the task to run.
+    - For daily tasks, select the UTC time you want the task to run.
+    - For hourly tasks, select the time you next want the task to run.
 
 6. Click **save**.
 
