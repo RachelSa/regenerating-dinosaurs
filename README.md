@@ -80,7 +80,7 @@ Also required:
 
  Before beginning this tutorial, you must have a Rails 5 application stored in a Github repository. Note that in order to deploy on Heroku, the app must have a PostgreSQL database (Rails apps are created with a SQLite database by default).
 
- If you don't have an existing app, you can [fork and clone](https://help.github.com/articles/fork-a-repo/) this Github repository, which includes a demo app with a rake file. The demo app has one model--dinosaur--and a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs in the database. See this app's [model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb), [routes](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/config/routes.rb), and [controller](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/controllers/dinosaurs_controller.rb) to see how this is set up. 
+ If you don't have an existing app, you can [fork and clone](https://help.github.com/articles/fork-a-repo/) this Github repository, which includes a demo app with a rake file. The demo app has one model--dinosaur--and a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs in the database. Checkout the app's [model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb), [routes](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/config/routes.rb), and [controller](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/controllers/dinosaurs_controller.rb) to see how this is set up.
 
 ### Instructions
 
@@ -91,7 +91,7 @@ Also required:
     * Description (**desc**) explains what the task will do.  
     * The **task** is named (this one is called restore_dinos).
     * **:environment** loads the Rails environment, allowing access to the rest of the Rails app, such as models.
-    * Within the **do** block, the task occurs. This example prints a message before calling the `.restore` method on the Dinosaur model. After finishing, it prints 'done'.
+    * Within the **do** block, the task occurs. This example prints a message before calling the `.restore` method on the [Dinosaur model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb). After finishing, it prints 'done'.
     * The code block is closed (**end**).
 
 ```ruby  
@@ -108,22 +108,30 @@ end
 ### Pushing to Github and Deploying to Heroku
 1. Add, commit, and push the code to Github. The master branch on Github should now have the created rake file and tasks.  
 
-2. To deploy the app to Heroku, first run the following command, which connects your repository to the app created on Heroku. Be sure to use the name that you set when creating the app on the Heroku dashboard.  
+2. If your app is already deployed to Heroku, simply run the command ```git push heroku master`` and skip to the [next part of the tutorial](https://github.com/RachelSa/regenerating-dinosaurs#testing-and-scheduling-the-rake-task).
+
+Otherwise, deploy the app to Heroku by first running the following command, which connects your repository to the app created on Heroku. Be sure to use the name that you set when creating the app on the Heroku dashboard.  
+
 ```heroku git:remote -a your-app-name```
 
-3.   Push the code from the Github repository's master branch to Heroku
+3. Push the code from the Github repository's master branch to Heroku.
+
 ```git push heroku master```
 
 4. Migrate the database on Heroku.
+
 ```heroku run rake db:migrate```
 
 5. Seed the database, if applicable.
+
  ```heroku rake db:seed```
 
 6. Heroku apps use **Dynos** to run processes for each deployed application. Dynos run web processes and perform jobs (such as a rake task). When the app is deployed, ensure a Dyno is running web processes.
+
 ```heroku ps:scale web=1```
 
 7. Open the deployed application in browser.
+
 ```heroku open```
 
 See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started-with-rails5) for more information about deployment.
@@ -131,6 +139,7 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started
 ### Testing and Scheduling the Rake Task
 
 1. Test that the task runs properly without errors.
+
 ```heroku run rake restore_dinos```
 
 2. The task can be scheduled to run using the app's Heroku dashboard. From the **Overview** dashboard, click **Heroku Scheduler** under **Installed Add-ons**.
@@ -138,7 +147,8 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started
 3. Click **Add New Job**.
 
 4. Enter the rake command for the task you want to run in the text field.
-     ```rake restore_dinos```
+
+```rake restore_dinos```
 
 5. Select the frequency you want the task to run from the dropdown.
         - For daily tasks, select the UTC time you want the task to run.
