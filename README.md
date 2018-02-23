@@ -9,6 +9,7 @@
     - [Creating a Rake Task](https://github.com/RachelSa/regenerating-dinosaurs#creating-a-rake-task)
     - [Pushing to Github and Deploying to Heroku](https://github.com/RachelSa/regenerating-dinosaurs#pushing-to-github-and-deploying-to-heroku)
     - [Testing and Scheduling the Rake Task](https://github.com/RachelSa/regenerating-dinosaurs#testing-and-scheduling-the-rake-task)
+ - [Reference of Terms](https://github.com/RachelSa/regenerating-dinosaurs#reference-of-terms)
 
 ## Tutorial Overview
 
@@ -106,7 +107,7 @@ end
 3. Test the rake task locally by running the command `rake restore_dinos`, replacing `restore_dinos` with your task's name.
 
 ### Pushing to Github and Deploying to Heroku
-1. Add, commit, and push the code to Github. Code is deployed to Heroku through Github, so the master branch on Github must have created rake file and tasks.  
+1. Add, commit, and push the code to Github. Code is deployed to Heroku through Github, so the master branch on Github must have the created rake file and tasks.  
 
 2. If your app is already deployed to Heroku, simply run the command ```git push heroku master``` and skip to [Testing and Scheduling the Rake Task](https://github.com/RachelSa/regenerating-dinosaurs#testing-and-scheduling-the-rake-task).
 
@@ -114,7 +115,7 @@ Otherwise, deploy the app to Heroku by first running the following command, whic
 `heroku git:remote -a your-app-name`
 
 3. Push the code from the Github repository's master branch to Heroku.
-  git push heroku master`
+  `git push heroku master`
 
 4. Migrate the database on Heroku.
   `heroku run rake db:migrate`
@@ -122,7 +123,7 @@ Otherwise, deploy the app to Heroku by first running the following command, whic
 5. Seed the database, if applicable.
   `heroku rake db:seed`
 
-6. Heroku apps use **Dynos** to run processes for each deployed application. Dynos run web processes and perform jobs (such as a rake task). When the app is deployed, ensure a Dyno is running web processes.
+6. Heroku apps use **Dynos** to run processes for each deployed application. Dynos run web processes and perform jobs (such as a rake task). When the app is deployed, ensure a Dyno is the running web processes.
   `heroku ps:scale web=1`
 
 7. Open the deployed application in browser.
@@ -152,13 +153,13 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started
 
 See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for more information about Heroku Scheduler.    
 
-### Reference of Terms
+## Reference of Terms
 
 **Dynos**: containers used to run web processes and perform jobs for apps deployed through Heroku
 
 **Git**: a version control system used widely in software development
 
-**Github**: a web hosted version control system that uses Git
+**Github**: a web-hosted version control system that uses Git
 
 **Heroku**: a cloud-based web-hosting service used to manage web application deployments
 
@@ -173,5 +174,12 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for 
 
 ## Questions:
  - What do you like about their existing documentation?
+  - Multiple language-specific examples
+  - No overly technical jargon, readable
+  - Copy and paste code snippets and commands
+  - Includes steps to confirm everything is working properly
+  - Includes timestamp of last update
+
  - What would you change about the documentation?
-more links
+  - Documentation sidebar navigation topics are too broad to browse
+  - Relevant language-related tutorials should be more available 
