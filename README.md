@@ -112,27 +112,27 @@ end
 
 Otherwise, deploy the app to Heroku by first running the following command, which connects your repository to the app created on Heroku. Be sure to use the name that you set when creating the app on the Heroku dashboard.  
 
-```heroku git:remote -a your-app-name```
+  ```heroku git:remote -a your-app-name```
 
 3. Push the code from the Github repository's master branch to Heroku.
 
-```git push heroku master```
+  ```git push heroku master```
 
 4. Migrate the database on Heroku.
 
-```heroku run rake db:migrate```
+  ```heroku run rake db:migrate```
 
 5. Seed the database, if applicable.
 
- ```heroku rake db:seed```
+  ```heroku rake db:seed```
 
 6. Heroku apps use **Dynos** to run processes for each deployed application. Dynos run web processes and perform jobs (such as a rake task). When the app is deployed, ensure a Dyno is running web processes.
 
-```heroku ps:scale web=1```
+  ```heroku ps:scale web=1```
 
 7. Open the deployed application in browser.
 
-```heroku open```
+  ```heroku open```
 
 See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started-with-rails5) for more information about deployment.
 
@@ -140,7 +140,7 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started
 
 1. Test that the task runs properly without errors.
 
-```heroku run rake restore_dinos```
+  ```heroku run rake restore_dinos```
 
 2. The task can be scheduled to run using the app's Heroku dashboard. From the **Overview** dashboard, click **Heroku Scheduler** under **Installed Add-ons**.
 
@@ -148,7 +148,7 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started
 
 4. Enter the rake command for the task you want to run in the text field.
 
-```rake restore_dinos```
+  ```rake restore_dinos```
 
 5. Select the frequency you want the task to run from the dropdown.
         - For daily tasks, select the UTC time you want the task to run.
