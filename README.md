@@ -66,11 +66,9 @@ Also required:
  - [Github account](https://github.com/)
  - A Heroku account and Heroku app created with Heroku Scheduler (see previous tutorial)
 
- Before beginning this tutorial, you must have a Rails 5 application deployed on Heroku. If you don't have an existing app, you can fork and clone this Github repository or generate a new Rails application with a PostgreSQL database (Heroku requires a PostgreSQL database) using the Rails generator command:
+ Before beginning this tutorial, you must have a Rails 5 application stored in a Github repository. Note that Heroku requires a PostgreSQL database (Rails apps are created with a SQLite database by default).
 
-   ```rails new app-name --database=postgresql```
-
- If you've created a new Rails application, you'll need to create resource in the database in order to test that the rake task is working. The demo app has one model--dinosaur--and a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs in the database.
+ If you don't have an existing app, you can fork and clone this Github repository, which includes a demo app with a rake file. The demo app has one model--dinosaur--and a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs in the database.
 
 ### Instructions
 
@@ -92,26 +90,31 @@ task :restore_dinos => :environment do
   puts "done"
 end
 ```
+### Pushing to Github and Deploying to Heroku
+1. Add, commit, and push the code to Github. The master branch on Github should now have the created rake file and tasks.  
 
-2. WHY GITHUB NEEDED
-If the project is not already on Github:
- - Initialize the project as a Git repository ```git init```.
- - Add all files in the repository for git staging. ```git add .```
- - Commit the files with a message. ```git commit -m "first commit"```
- - Create a repository on Github and add the remote SSH: ```git remote add origin git@github.com:RachelSa/regenerating-dinosaurs.git```
- - Push files up to the remote repository: ```git push -u origin master```
+2. To deploy the app to Heroku, first run the following command to configure the project to push code to the app created on Heroku. Be sure to use the name that you set when creating the app on the Heroku dashboard.  
+```heroku git:remote -a your-app-name```
 
-3. WHY HEROKU NEEDED
-If the project is not yet hosted on Heroku:
-  - heroku git:remote -a regenerating-dinosaur
-  - Deploy the code on the master Github repository branch to Heroku ```git push heroku master```
-  - Migrate the database on Heroku```heroku run rake db:migrate```
-  - Seed the database ```heroku rake db:seed```
-  - Ensure a dyno is running the web process```heroku ps:scale web=1```
-  - Open the deployed application ```heroku open```  
+3.   Push the code from the Github repository's master branch to Heroku
+```git push heroku master```
 
+4. Migrate the database on Heroku.
+```heroku run rake db:migrate```
 
-5. Test that the task runs properly without errors.```heroku run rake restore_dinos```
+5. Seed the database, if applicable.
+ ```heroku rake db:seed```
 
-6. Using Heroku's admin dashboard, schedule the task to run.
+6. Ensure a dyno is running the web process.
+```heroku ps:scale web=1```
+
+7. Open the deployed application
+```heroku open```  
+
+### Test and Schedule the Rake Task
+
+1. Test that the task runs properly without errors.
+```heroku run rake restore_dinos```
+
+2. Using Heroku's admin dashboard, schedule the task to run.
 https://sheltered-temple-85179.herokuapp.com/dinosaurs
