@@ -18,9 +18,9 @@ Some applications need tasks to occur at set intervals. Examples of this may inc
   - An hourly update of forecast data for a weather-related app
   - A recalculation of an app's top trending hashtag every ten minutes  
 
-A task is simply an action that can be executed in a code block, such as sending an email to users. A task could also insert, update, or delete information from the application's database.
+A task is simply an action that can be executed in a code block, such as sending an email to users. A task could also get, insert, update, or delete information from the application's database.
 
-For Ruby on Rails applications, these tasks are called rake tasks. The ruby code that performs tasks is written in a file with a .rake extension, called a rake file.
+Ruby on Rails applications have a task management tool called Rake. The ruby code that performs tasks is written in a file with a .rake extension, called a rake file. The tasks are called rake tasks. They can be run with the command `rake`, plus the task name, such as `rake send_renewal_reminders`.
 
 This tutorial describes how to run rake tasks for Rails 5.x applications deployed through the Heroku platform. Heroku is a cloud-based web-hosting service used to manage web application deployments.
 
@@ -30,9 +30,9 @@ Heroku has a free add-on called Heroku Scheduler, which is used to handle basic 
 
 ### Description
 
-Heroku Scheduler is a free Heroku add-on that runs tasks at specific intervals. Tasks can be run daily, hourly, or every ten minutes with the Scheduler. Daily tasks are set to run at a specified UTC time.
+Heroku Scheduler is a free Heroku add-on that runs tasks at specific intervals. Tasks can be run daily, hourly, or every ten minutes with Scheduler.
 
-Through Heroku's admin dashboard, Scheduler can be added to an app, and tasks can be scheduled. This tutorial shows how to create a new Heroku project and add the Scheduler.
+Through Heroku's admin dashboard, Scheduler can be added to an app, and tasks can be scheduled. This tutorial shows how to create a new Heroku project and add Scheduler.
 
 ### Intended Audience
 
@@ -52,8 +52,8 @@ You must have a [Heroku account](https://www.heroku.com/home) to complete this t
 #### Adding the Heroku Scheduler
 1. From the dashboard, select the **Overview** tab and click **Configure Add-ons**.
 2. Under **Add-ons**, search for **Heroku Scheduler**.
-3. Upon selecting the Scheduler, agree to the Terms of Service.
-4. The Scheduler will be added and in the **Overview** dashboard, the Scheduler will be visible under **Installed add-ons**.
+3. Upon selecting Heroku Scheduler, agree to the Terms of Service.
+4. Scheduler will be added and in the **Overview** dashboard, Scheduler will be visible under **Installed add-ons**.
 
 
 ## Part 2: Create a Rake Task and Configure on Heroku
@@ -79,7 +79,7 @@ Also required:
  - [Github account](https://github.com/)
  - [A Heroku account and Heroku app created with Heroku Scheduler](https://github.com/RachelSa/regenerating-dinosaurs#part-1-using-the-admin-dashboard-create-a-heroku-app-with-the-heroku-scheduler-add-on)
 
- Before beginning this tutorial, you must have a Rails 5 application stored in a Github repository. Note that in order to deploy on Heroku, the app must have a PostgreSQL database (Rails apps are created with a SQLite database by default).
+ Before beginning this tutorial, you must have a Rails 5 application with a Github repository. Note that in order to deploy on Heroku, the app must have a PostgreSQL database (Rails apps are created with a SQLite database by default).
 
  If you don't have an existing app, you can [fork and clone](https://help.github.com/articles/fork-a-repo/) this Github repository, which includes a demo app with a rake file. The demo app has one model--dinosaur--and a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs in the database. Checkout the app's [model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb), [routes](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/config/routes.rb), and [controller](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/controllers/dinosaurs_controller.rb) to see how this is set up.
 
@@ -123,7 +123,7 @@ Otherwise, deploy the app to Heroku by first running the following command, whic
 5. Seed the database, if applicable.
   `heroku rake db:seed`
 
-6. Heroku apps use **Dynos** to run processes for each deployed application. Dynos run web processes and perform jobs (such as a rake task). When the app is deployed, ensure a Dyno is the running web processes.
+6. Heroku apps use **Dynos** to run processes for each deployed application. Dynos run web processes and perform jobs (such as a rake task). When the app is deployed, ensure a Dyno is running the web processes.
   `heroku ps:scale web=1`
 
 7. Open the deployed application in browser.
@@ -145,7 +145,7 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started
 
 5. Select the frequency you want the task to run from the dropdown.
     - For daily tasks, select the UTC time you want the task to run.
-    - For hourly tasks, select the time you next want the task to run.
+    - For hourly tasks, select the minutes on the hour you want the task to run.
 
 6. Click **save**.
 
@@ -167,19 +167,21 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for 
 
 **PostgreSQL**: an object-relational database system
 
-**Rake task**: an action that is executed in a ruby code block, and is stored in a rake file
+**Rake task**: a job that is executed in a ruby code block, and is stored in a rake file
 
-**Ruby on Rails**: a web application framework that has a model-view-controller structure
+**Ruby on Rails**: a web application framework with a model-view-controller structure
 
 
 ## Questions:
  - What do you like about their existing documentation?
   - Multiple language-specific examples
-  - No overly technical jargon, readable
+  - Readable; no overly technical jargon
   - Copy and paste code snippets and commands
   - Includes steps to confirm everything is working properly
   - Includes timestamp of last update
 
  - What would you change about the documentation?
+  - No quick reference of Heroku commands
+  - Scrolling
   - Documentation sidebar navigation topics are too broad to browse
-  - Relevant language-related tutorials should be more available 
+  - Relevant language-related tutorials should be more available
