@@ -20,7 +20,7 @@ Some applications need tasks to occur at set intervals. Examples of this may inc
 
 A task is simply an action that can be executed in a code block, such as sending an email to users. A task could also get, insert, update, or delete information from the application's database.
 
-Ruby on Rails applications have a task management tool called Rake. The ruby code that performs tasks is written in a file with a .rake extension, called a rake file. The tasks are called rake tasks. They can be run with the command `rake`, plus the task name, such as `rake send_renewal_reminders`.
+Ruby on Rails applications have a task management tool called Rake. Rake tasks (the ruby code that performs jobs) are written in a file with a .rake extension, called a rake file. They can be run with the command `rake`, plus the task name, such as `rake send_renewal_reminders`.
 
 This tutorial describes how to run rake tasks for Rails 5.x applications deployed through the Heroku platform. Heroku is a cloud-based web-hosting service used to manage web application deployments.
 
@@ -60,9 +60,9 @@ You must have a [Heroku account](https://www.heroku.com/home) to complete this t
 
 ### Description
 
-In order for Heroku Scheduler to run custom rake tasks, a Rails application must have a scheduler.rake file with one or more tasks. This tutorial will show how to add rake tasks to a Rails app, push the code a Heroku app, and schedule the tasks with Heroku Scheduler.
+In order for Heroku Scheduler to run custom rake tasks, a Rails application must have a scheduler.rake file with one or more tasks. This tutorial shows how to add rake tasks to a Rails app, push the code a Heroku app, and schedule the tasks with Heroku Scheduler.
 
-This Github repository contains a demo Rails application with a [rake file](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/lib/tasks/scheduler.rake) containing two tasks. It will be referenced throughout the tutorial.  
+This Github repository contains a demo Rails application with a [rake file](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/lib/tasks/scheduler.rake) containing two tasks, which will be referenced throughout the tutorial.  
 
 ### Intended Audience
 Ruby on Rails Developer
@@ -81,7 +81,7 @@ Also required:
 
  Before beginning this tutorial, you must have a Rails 5 application with a Github repository. Note that in order to deploy on Heroku, the app must have a PostgreSQL database (Rails apps are created with a SQLite database by default).
 
- If you don't have an existing app, you can [fork and clone](https://help.github.com/articles/fork-a-repo/) this Github repository, which includes a demo app with a rake file. The demo app has one model--dinosaur--and a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs in the database. Checkout the app's [model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb), [routes](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/config/routes.rb), and [controller](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/controllers/dinosaurs_controller.rb) to see how this is set up.
+ If you don't have an existing app, you can [fork and clone](https://help.github.com/articles/fork-a-repo/) this Github repository, which includes a demo app with a rake file. The demo app has one model--dinosaur--and a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs in the database. Check the app's [model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb), [routes](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/config/routes.rb), and [controller](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/controllers/dinosaurs_controller.rb) to see how this is set up.
 
 ### Instructions
 
@@ -90,8 +90,8 @@ Also required:
 2. Within the rakefile, create one or more tasks. A rake task is made up of the following parts:
 
     * Description (**desc**) explains what the task will do.  
-    * The **task** is named (this one is called restore_dinos).
-    * **:environment** loads the Rails environment, allowing access to the rest of the Rails app, such as models.
+    * The **task** is named. (This one is called restore_dinos.)
+    * **:environment** loads the Rails environment, allowing access to existing code in the rest of the Rails app, such as models.
     * Within the **do** block, the task occurs. This example prints a message before calling the `.restore` method on the [Dinosaur model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb). After finishing, it prints 'done'.
     * The code block is closed (**end**).
 
@@ -126,14 +126,14 @@ Otherwise, deploy the app to Heroku by first running the following command, whic
 6. Heroku apps use **Dynos** to run processes for each deployed application. Dynos run web processes and perform jobs (such as a rake task). When the app is deployed, ensure a Dyno is running the web processes.
   `heroku ps:scale web=1`
 
-7. Open the deployed application in browser.
+7. Open the application in browser to confirm the deployment worked.
   `heroku open`
 
 See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started-with-rails5) for more information about deployment.
 
 ### Testing and Scheduling the Rake Task
 
-1. Test that the task runs properly without errors.
+1. Test that the task runs properly on Heroku without errors.
 `heroku run rake restore_dinos`
 
 2. The task can be scheduled to run using the app's Heroku dashboard. From the **Overview** dashboard, click **Heroku Scheduler** under **Installed Add-ons**.
@@ -167,20 +167,20 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for 
 
 **PostgreSQL**: an object-relational database system
 
-**Rake task**: a job that is executed in a ruby code block, and is stored in a rake file
+**Rake task**: a job that is executed by a ruby code block, and is stored in a rake file
 
 **Ruby on Rails**: a web application framework with a model-view-controller structure
 
 
 ## Questions:
- - What do you like about their existing documentation?
+What do you like about their existing documentation?
   - Multiple language-specific examples
   - Readable; no overly technical jargon
   - Copy and paste code snippets and commands
   - Includes steps to confirm everything is working properly
   - Includes timestamp of last update
 
- - What would you change about the documentation?
+What would you change about the documentation?
   - No quick reference of Heroku commands
   - Scrolling
   - Documentation sidebar navigation topics are too broad to browse
