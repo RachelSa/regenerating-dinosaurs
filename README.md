@@ -174,8 +174,7 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for 
 
 ## Questions:
 What do you like about their existing documentation?
-  - Multiple language-specific examples
-  - Readable; no overly technical jargon
+  - Readable; no unnecessary jargon
   - Copy and paste code snippets and commands
   - Includes steps to confirm everything is working properly
   - Includes timestamp of last update
