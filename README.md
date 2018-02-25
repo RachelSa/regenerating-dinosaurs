@@ -2,10 +2,10 @@
 
 ## Contents
  - [Tutorial Overview](https://github.com/RachelSa/regenerating-dinosaurs#tutorial-overview)
- - [Part 1: Using the Admin Dashboard, Create a Heroku App with the Heroku Scheduler Add-on](https://github.com/RachelSa/regenerating-dinosaurs#part-1-using-the-admin-dashboard-create-a-heroku-app-with-the-heroku-scheduler-add-on)
+ - [Part 1: Set-up a project using the Admin Dashboard Add-on](https://github.com/RachelSa/regenerating-dinosaurs#part-1-using-the-admin-dashboard-create-a-heroku-app-with-the-heroku-scheduler-add-on)
     - [Creating a Heroku App](https://github.com/RachelSa/regenerating-dinosaurs#creating-a-heroku-app)
     - [Adding the Heroku Scheduler](https://github.com/RachelSa/regenerating-dinosaurs#adding-the-heroku-scheduler)
- - [Part 2: Create a Rake Task and Configure on Heroku](https://github.com/RachelSa/regenerating-dinosaurs#part-2-create-a-rake-task-and-configure-on-heroku)
+ - [Part 2: Create a Scheduled Task Heroku](https://github.com/RachelSa/regenerating-dinosaurs#part-2-create-a-rake-task-and-configure-on-heroku)
     - [Creating a Rake Task](https://github.com/RachelSa/regenerating-dinosaurs#creating-a-rake-task)
     - [Pushing to Github and Deploying to Heroku](https://github.com/RachelSa/regenerating-dinosaurs#pushing-to-github-and-deploying-to-heroku)
     - [Testing and Scheduling the Rake Task](https://github.com/RachelSa/regenerating-dinosaurs#testing-and-scheduling-the-rake-task)
@@ -14,23 +14,23 @@
 ## Tutorial Overview
 
 Some applications need tasks to occur at set intervals. Examples of this may include:
-  - A daily check for users whose annual subscription needs renewal
+  - A daily check for users whose annual subscription needs renewal **not great example -- program can just set to occur once 365 days from open subscription date instead of every day**
   - An hourly update of forecast data for a weather-related app
-  - A recalculation of an app's top trending hashtag every ten minutes  
+  - A recalculation of an application's top trending hashtag every ten minutes  
 
-A task is simply an action that can be executed in a code block, such as sending an email to users. A task could also get, insert, update, or delete information from the application's database.
+A task is simply an action that can be executed in a code block, such as sending an email to users. A task could also get, insert, update, or delete information from the application's database. **would reword this to be less specific. Something like: "A task is any sub-routine that you are activating outside of a the normal operation of an application". Would remove the get/insert/update/delete. If you want high level examples, maybe: "to make a web request, to update a cached resource, to read/write to your database"
 
-Ruby on Rails applications have a task management tool called Rake. Rake tasks (the ruby code that performs jobs) are written in a file with a .rake extension, called a rake file. They can be run with the command `rake`, plus the task name, such as `rake send_renewal_reminders`.
+Ruby on Rails applications have a task management tool called Rake. Rake tasks (the Ruby code that performs jobs) are written in a file with a .rake extension, called a Rake file. They can be run with the command `rake <task_name>`, i.e.: `rake send_renewal_reminders`.
 
-This tutorial describes how to run rake tasks for Rails 5.x applications deployed through the Heroku platform. Heroku is a cloud-based web-hosting service used to manage web application deployments.
+This tutorial describes how to run Rake tasks for Rails 5.x applications deployed through the Heroku platform. Heroku is a cloud-based web-hosting service used to manage web application deployments.
 
-Heroku has a free add-on called Heroku Scheduler, which is used to handle basic task scheduling. Without a task scheduler, a rake task can be manually run from the command line. With the Heroku Scheduler, a task can be run automatically at specified times.
+Heroku has a free add-on called Heroku Scheduler, which is used to handle basic task scheduling. Without a task scheduler, a Rake task can be manually run from the command line. With the Heroku Scheduler, a task can be run automatically at specified times.
 
-## Part 1: Using the Admin Dashboard, Create a Heroku App with the Heroku Scheduler Add-on
+## Part 1: Set-up a project using the Admin Dashboard
 
 ### Description
 
-Heroku Scheduler is a free Heroku add-on that runs tasks at specific intervals. Tasks can be run daily, hourly, or every ten minutes with Scheduler.
+Heroku Scheduler is a free Heroku add-on that runs tasks at specific intervals. Tasks can be run daily, hourly, or every ten minutes with Scheduler (<-- are these examples or actual restrictions of Scheduler?).
 
 Through Heroku's admin dashboard, Scheduler can be added to an app, and tasks can be scheduled. This tutorial shows how to create a new Heroku project and add Scheduler.
 
@@ -52,15 +52,15 @@ You must have a [Heroku account](https://www.heroku.com/home) to complete this t
 #### Adding the Heroku Scheduler
 1. From the dashboard, select the **Overview** tab and click **Configure Add-ons**.
 2. Under **Add-ons**, search for **Heroku Scheduler**.
-3. Upon selecting Heroku Scheduler, agree to the Terms of Service.
-4. Scheduler will be added and in the **Overview** dashboard, Scheduler will be visible under **Installed add-ons**.
+3. Upon selecting **Heroku Scheduler**, agree to the Terms of Service.
+4. **Scheduler** will be added and in the **Overview** dashboard, **Scheduler** will be visible under **Installed add-ons**.
 
 
-## Part 2: Create a Rake Task and Configure on Heroku
+## Part 2: Create a Scheduled Task
 
 ### Description
 
-In order for Heroku Scheduler to run custom rake tasks, a Rails application must have a scheduler.rake file with one or more tasks. This tutorial shows how to add rake tasks to a Rails app, push the code a Heroku app, and schedule the tasks with Heroku Scheduler.
+In order for Heroku Scheduler to run custom Rake tasks, a Rails application must have a `scheduler.rake` file with one or more tasks. This tutorial demonstrates how to add Rake tasks to a Rails app, push the that code to a Heroku app, and schedule the tasks with Heroku Scheduler. (**not sure if telling them the scheduler.rake file is needed needs to be here in the high level description**)
 
 This Github repository contains a demo Rails application with a [rake file](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/lib/tasks/scheduler.rake) containing two tasks, which will be referenced throughout the tutorial.  
 
@@ -79,22 +79,15 @@ Also required:
  - [Github account](https://github.com/)
  - [A Heroku account and Heroku app created with Heroku Scheduler](https://github.com/RachelSa/regenerating-dinosaurs#part-1-using-the-admin-dashboard-create-a-heroku-app-with-the-heroku-scheduler-add-on)
 
- Before beginning this tutorial, you must have a Rails 5 application with a Github repository. Note that in order to deploy on Heroku, the app must have a PostgreSQL database (Rails apps are created with a SQLite database by default).
+ Before beginning this tutorial, you must have a Rails 5 application with a Github repository. Note that in order to deploy on Heroku, the app must have a PostgreSQL (**does heroku really only use PostgreSQL?**) database (Rails apps are created with a SQLite database by default)(**are you sure? did flatiron do this in the config they gave us?**).
 
- If you don't have an existing app, you can [fork and clone](https://help.github.com/articles/fork-a-repo/) this Github repository, which includes a demo app with a rake file. The demo app has one model--dinosaur--and a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs in the database. Check the app's [model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb), [routes](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/config/routes.rb), and [controller](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/controllers/dinosaurs_controller.rb) to see how this is set up.
+ If you don't have an existing app, you can [fork and clone](https://help.github.com/articles/fork-a-repo/) this Github repository, which includes a demo app with a Rake file. The demo app has one model, `dinosaur`, and a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs in the database. Check the app's [model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb), [routes](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/config/routes.rb), and [controller](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/controllers/dinosaurs_controller.rb) to see how this is set up.
 
 ### Instructions
 
 #### Creating a Rake Task
-1. Within the Rails application, create a new file: ```lib/tasks/scheduler.rake```
-2. Within the rakefile, create one or more tasks. A rake task is made up of the following parts:
 
-    * Description (**desc**) explains what the task will do.  
-    * The **task** is named. (This one is called restore_dinos.)
-    * **:environment** loads the Rails environment, allowing access to existing code in the rest of the Rails app, such as models.
-    * Within the **do** block, the task occurs. This example prints a message before calling the `.restore` method on the [Dinosaur model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb). After finishing, it prints 'done'.
-    * The code block is closed (**end**).
-
+(moved this up just because in programming books code snippet is often followed up description)
 ```ruby  
 desc "Restore dinosaurs"
 task :restore_dinos => :environment do
@@ -104,10 +97,19 @@ task :restore_dinos => :environment do
 end
 ```
 
-3. Test the rake task locally by running the command `rake restore_dinos`, replacing `restore_dinos` with your task's name.
+1. Within the Rails application, create a new file: `lib/tasks/scheduler.rake`
+2. Within the Rake file, create one or more tasks. A Rake task is made up of the following:
+
+    * `desc <task_description` (**perhaps mention its feedback for stdout when you try to read what tasks are available (rake -T or w/e)**)
+    * `task <:symbolized_task_name>`, 'restore_dinos' in our example, pointing to:
+    * `:<environment>`, (**this description needs a rework -- you choose the environment.**)
+    * The actual task described in Ruby!! (they are rails programmers no need to tell them the code goes between the do and the end)
+
+
+3. Test the Rake task locally by running the command `rake restore_dinos`, replacing `restore_dinos` with your task's name.
 
 ### Pushing to Github and Deploying to Heroku
-1. Add, commit, and push the code to Github. Code is deployed to Heroku through Github, so the master branch on Github must have the created rake file and tasks.  
+1. `add`, `commit`, and `push` the code to Github. Code is deployed to Heroku through Github, so the master branch on Github must have the created Rake file and tasks. (**how why more description needed. Heroku is watching a github url? there is some hook?**)
 
 2. If your app is already deployed to Heroku, simply run the command ```git push heroku master``` and skip to [Testing and Scheduling the Rake Task](https://github.com/RachelSa/regenerating-dinosaurs#testing-and-scheduling-the-rake-task).
 
@@ -123,7 +125,7 @@ Otherwise, deploy the app to Heroku by first running the following command, whic
 5. Seed the database, if applicable.
   `heroku rake db:seed`
 
-6. Heroku apps use **Dynos** to run processes for each deployed application. Dynos run web processes and perform jobs (such as a rake task). When the app is deployed, ensure a Dyno is running the web processes.
+6. Heroku apps use **Dynos** to run processes for each deployed application. **Dynos** run web processes and perform jobs (such as a Rake task). When the app is deployed, ensure a **Dyno** is running the web processes.
   `heroku ps:scale web=1`
 
 7. Open the application in browser to confirm the deployment worked.
@@ -140,11 +142,11 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/getting-started
 
 3. Click **Add New Job**.
 
-4. Enter the rake command for the task you want to run in the text field.
+4. Enter the `rake` command for the task you want to run in the text field.
 `rake restore_dinos`
 
 5. Select the frequency you want the task to run from the dropdown.
-    - For daily tasks, select the UTC time you want the task to run.
+    - For daily tasks, select the UTC (**utc time?**) time you want the task to run.
     - For hourly tasks, select the minutes on the hour you want the task to run.
 
 6. Click **save**.
@@ -159,7 +161,7 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for 
 
 **Git**: a version control system used widely in software development
 
-**Github**: a web-hosted version control system that uses Git
+**Github**: a web-hosted version control system that uses Git (**git is githubs version control system**)
 
 **Heroku**: a cloud-based web-hosting service used to manage web application deployments
 
@@ -167,10 +169,11 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for 
 
 **PostgreSQL**: an object-relational database system
 
-**Rake task**: a job that is executed by a ruby code block, and is stored in a rake file
+**Rake**: do me!
 
-**Ruby on Rails**: a web application framework with a model-view-controller structure
+**Rake task**: a sub-routine written written in Ruby in a Rake file
 
+**Ruby on Rails**: a Ruby web application framework
 
 ## Questions:
 What do you like about their existing documentation?
