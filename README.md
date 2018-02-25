@@ -83,7 +83,7 @@ Also required:
 
  Before beginning this tutorial, you must have a Rails 5 application with a Github repository. Note that in order to deploy on Heroku, the app must have a PostgreSQL database (Rails apps are created with a sqlite3 database by default).
 
- If you don't have an existing app, you can [fork and clone](https://help.github.com/articles/fork-a-repo/) this Github repository, which includes a demo app with a rake file. The demo app has one model, `dinosaur` and a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs in the database. Check the app's [model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb), [routes](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/config/routes.rb), and [controller](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/controllers/dinosaurs_controller.rb) to see how this is set up.
+ If you don't have an existing app, you can [fork and clone](https://help.github.com/articles/fork-a-repo/) this Github repository, which includes a demo app with a rake file. The demo app has one model `dinosaur` and a route, ['/dinosaurs'](https://regenerating-dinosaur.herokuapp.com/dinosaurs), which renders JSON data containing information about all dinosaurs in the database. Check the app's [model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb), [routes](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/config/routes.rb), and [controller](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/controllers/dinosaurs_controller.rb) to see how this is set up.
 
 ### Instructions
 
@@ -99,11 +99,12 @@ task :restore_dinos => :environment do
   puts "done"
 end
 ```
+
 A rake task is made up of the following parts:
-    * `desc <task_description` explains what the task will do.  
-    * `task <:symbolized_task_name>` names the task. (This one is called restore_dinos.)
-    * `=> :environment` loads the Rails environment, allowing access to existing code in the rest of the Rails app, such as models.
-    * The task is written within the code block. This example prints a message before calling the `.restore` method on the [Dinosaur model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb). After finishing, it prints 'done'.
+  - `desc <task_description` explains what the task will do.  
+  - `task <:symbolized_task_name>` names the task. (This one is called restore_dinos.)
+  - `=> :environment` loads the Rails environment, allowing access to existing code in the rest of the Rails app, such as models.
+  - The task is written within the code block. This example prints a message before calling the `.restore` method on the [Dinosaur model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb). After finishing, it prints 'done'.
 
 
 
