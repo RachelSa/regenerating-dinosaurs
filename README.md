@@ -2,10 +2,10 @@
 
 ## Contents
  - [Tutorial Overview](https://github.com/RachelSa/regenerating-dinosaurs#tutorial-overview)
- - [Part 1: Using the Admin Dashboard, Create a Heroku App with the Heroku Scheduler Add-on](https://github.com/RachelSa/regenerating-dinosaurs#part-1-using-the-admin-dashboard-create-a-heroku-app-with-the-heroku-scheduler-add-on)
+ - [Part 1: Create a Heroku App with the Heroku Scheduler Add-on Add-on](https://github.com/RachelSa/regenerating-dinosaurs#part-1-create-a-heroku-app-with-the-heroku-scheduler-add-on)
     - [Creating a Heroku App](https://github.com/RachelSa/regenerating-dinosaurs#creating-a-heroku-app)
     - [Adding the Heroku Scheduler](https://github.com/RachelSa/regenerating-dinosaurs#adding-the-heroku-scheduler)
- - [Part 2: Create a Rake Task and Configure on Heroku](https://github.com/RachelSa/regenerating-dinosaurs#part-2-create-a-rake-task-and-configure-on-heroku)
+ - [Part 2: Create a Scheduled Rake Task](https://github.com/RachelSa/regenerating-dinosaurs#part-2-create-a-scheduled-rake-task)
     - [Creating a Rake Task](https://github.com/RachelSa/regenerating-dinosaurs#creating-a-rake-task)
     - [Pushing to Github and Deploying to Heroku](https://github.com/RachelSa/regenerating-dinosaurs#pushing-to-github-and-deploying-to-heroku)
     - [Testing and Scheduling the Rake Task](https://github.com/RachelSa/regenerating-dinosaurs#testing-and-scheduling-the-rake-task)
@@ -30,7 +30,7 @@ Heroku has a free add-on called Heroku Scheduler, which is used to handle basic 
   - Tasks can only be run daily, hourly, or every ten minutes with Scheduler. For cases where different time intervals are needed, use a [custom clock process](https://devcenter.heroku.com/articles/scheduled-jobs-custom-clock-processes).
   - In rare cases, jobs scheduled with Heroku Scheduler may be skipped or run twice. Check Heroku's documentation for [alternatives and task monitoring options](https://devcenter.heroku.com/articles/scheduler#known-issues-and-alternatives).  
 
-## Part 1: Using the Admin Dashboard, Create a Heroku App with the Heroku Scheduler Add-on
+## Part 1: Create a Heroku App with the Heroku Scheduler Add-on
 
 ### Description
 
