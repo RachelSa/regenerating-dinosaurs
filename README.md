@@ -2,7 +2,7 @@
 
 ## Contents
  - [Tutorial Overview](https://github.com/RachelSa/regenerating-dinosaurs#tutorial-overview)
- - [Part 1: Create a Heroku App with the Heroku Scheduler Add-on Add-on](https://github.com/RachelSa/regenerating-dinosaurs#part-1-create-a-heroku-app-with-the-heroku-scheduler-add-on)
+ - [Part 1: Create a Heroku App with the Heroku Scheduler Add-on](https://github.com/RachelSa/regenerating-dinosaurs#part-1-create-a-heroku-app-with-the-heroku-scheduler-add-on)
     - [Creating a Heroku App](https://github.com/RachelSa/regenerating-dinosaurs#creating-a-heroku-app)
     - [Adding the Heroku Scheduler](https://github.com/RachelSa/regenerating-dinosaurs#adding-the-heroku-scheduler)
  - [Part 2: Create a Scheduled Rake Task](https://github.com/RachelSa/regenerating-dinosaurs#part-2-create-a-scheduled-rake-task)
