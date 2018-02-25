@@ -26,11 +26,13 @@ This tutorial describes how to run rake tasks for Rails 5.x applications deploye
 
 Heroku has a free add-on called Heroku Scheduler, which is used to handle basic task scheduling. Without a task scheduler, a rake task can be manually run from the command line. With the Heroku Scheduler, a task can be run automatically at specified times.
 
+**Notes about Heroku Scheduler**:
+  - Tasks can be run daily, hourly, or every ten minutes with Scheduler. For cases where different time intervals are needed, use a [custom clock process](https://devcenter.heroku.com/articles/scheduled-jobs-custom-clock-processes).
+  - In rare cases, jobs scheduled with Heroku Scheduler may be skipped or run twice. Check Heroku's documentation for [alternatives and task monitoring options](https://devcenter.heroku.com/articles/scheduler#known-issues-and-alternatives).  
+
 ## Part 1: Using the Admin Dashboard, Create a Heroku App with the Heroku Scheduler Add-on
 
 ### Description
-
-Heroku Scheduler is a free Heroku add-on that runs tasks at specific intervals. Tasks can be run daily, hourly, or every ten minutes with Scheduler.
 
 Through Heroku's admin dashboard, Scheduler can be added to an app, and tasks can be scheduled. This tutorial shows how to create a new Heroku project and add Scheduler.
 
@@ -181,6 +183,6 @@ What do you like about their existing documentation?
 
 What would you change about the documentation?
   - No quick reference of Heroku commands
-  - Scrolling
+  - Scrolling / no sidebar or stikcy TOC
   - Documentation sidebar navigation topics are too broad to browse
   - Relevant language-related tutorials should be more available
