@@ -103,7 +103,7 @@ end
 A rake task is made up of the following parts:
   - `desc <task_description>` explains what the task will do.  
   - `task <:symbolized_task_name>` names the task. (This one is called restore_dinos.)
-  - `=> :environment` loads the Rails environment, allowing access to existing code in the rest of the Rails app, such as models.
+  - `=> :environment` allows the Rails environment to be loaded, giving access to existing code in the rest of the Rails app, such as models.
   - The task is written within the code block. This example prints a message before calling the `.restore` method on the [Dinosaur model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb). After finishing, it prints 'done'.
 
 3. Test the rake task locally by running the command `rake <task-name>`.
