@@ -18,7 +18,7 @@ Some applications need tasks to occur at set intervals. Examples of this may inc
   - An hourly update of forecast data for a weather-related app
   - A recalculation of an application's top trending hashtag every ten minutes  
 
-A task is any sub-routine activated outside of a the normal operation of an application, such as a read or write to the application's database or a request to an API.
+A task is a subroutine--a set of instructions to perform a job. The task could be a read or write to the application's database, a request to an API, or any job that can be routinely executed by code.
 
 Ruby on Rails applications have a task management tool called Rake. Rake tasks (the Ruby code that performs jobs) are written in a file with a .rake extension, called a Rake file. They can be run with the command `rake <task_name>`, i.e.: `rake send_renewal_reminders`.
 
@@ -161,7 +161,7 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for 
 
 **Git**: a version control system used widely in software development
 
-**Github**: a web-hosted Git version control  
+**Github**: a web-hosted Git version control system  
 
 **Heroku**: a cloud-based web-hosting service used to manage web application deployments
 
