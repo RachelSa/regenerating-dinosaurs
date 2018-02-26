@@ -18,7 +18,7 @@ Some applications need tasks to occur at set intervals. Examples of this may inc
   - An hourly update of forecast data for a weather-related app
   - A recalculation of an application's top trending hashtag every ten minutes  
 
-A task is a subroutine, a set of instructions to perform a job. The task could be a read or write to the application's database, a request to an API, or any job that can be routinely executed by code.
+A task is a set of instructions to perform a job. The task could be a read or write to the application's database, a request to an API, or any job that can be routinely executed by code.
 
 Ruby on Rails applications have a task management tool called Rake. Rake tasks are written in a file with a .rake extension, called a Rake file. They can be run with the command `rake <task_name>`, i.e.: `rake send_renewal_reminders`.
 
