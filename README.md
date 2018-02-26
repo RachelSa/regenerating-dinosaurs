@@ -20,7 +20,7 @@ Some applications need tasks to occur at set intervals. Examples of this may inc
 
 A task is a subroutine, a set of instructions to perform a job. The task could be a read or write to the application's database, a request to an API, or any job that can be routinely executed by code.
 
-Ruby on Rails applications have a task management tool called Rake. Rake tasks (the Ruby code that performs jobs) are written in a file with a .rake extension, called a Rake file. They can be run with the command `rake <task_name>`, i.e.: `rake send_renewal_reminders`.
+Ruby on Rails applications have a task management tool called Rake. Rake tasks are written in a file with a .rake extension, called a Rake file. They can be run with the command `rake <task_name>`, i.e.: `rake send_renewal_reminders`.
 
 This tutorial describes how to run Rake tasks for Rails 5.x applications deployed through the Heroku platform. Heroku is a cloud-based web-hosting service used to manage web application deployments.
 
@@ -103,7 +103,7 @@ end
 A rake task is made up of the following parts:
   - `desc <task_description>` explains what the task will do.  
   - `task <:symbolized_task_name>` names the task. (This one is called restore_dinos.)
-  - `=> :environment` allows the Rails environment to be loaded, giving access to existing code in the rest of the Rails app, such as models.
+  - `=> :environment` loads the entire Rails app by default, giving access to models, etc.
   - The task is written within the code block. This example prints a message before calling the `.restore` method on the [Dinosaur model](https://github.com/RachelSa/regenerating-dinosaurs/blob/master/app/models/dinosaur.rb). After finishing, it prints 'done'.
 
 3. Test the rake task locally by running the command `rake <task-name>`.
