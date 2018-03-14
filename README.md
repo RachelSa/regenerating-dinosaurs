@@ -1,4 +1,4 @@
-# Using Heroku Scheduler Automate Tasks for Rails 5.x Applications
+# Using Heroku Scheduler to Automate Tasks for Rails 5.x Applications
 
 ## Contents
  - [Tutorial Overview](https://github.com/RachelSa/regenerating-dinosaurs#tutorial-overview)
