@@ -175,7 +175,7 @@ See [Heroku documentation](https://devcenter.heroku.com/articles/scheduler) for 
 
 
 ## Questions:
-What do you like about their existing documentation?
+What do you like about Heroku's existing documentation?
   - Readable; no unnecessary jargon
   - Copy and paste code snippets and commands
   - Includes steps to confirm everything is working properly
@@ -183,6 +183,6 @@ What do you like about their existing documentation?
 
 What would you change about the documentation?
   - No quick reference of Heroku commands
-  - Scrolling / no sidebar or stikcy TOC
+  - Scrolling / no sidebar or sticky TOC
   - Documentation sidebar navigation topics are too broad to browse
   - Relevant language-related tutorials should be more available
